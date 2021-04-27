@@ -52,6 +52,11 @@ class TestUserModel(unittest.TestCase):
         User(1).update({'username': 'mikesarfaty2'})
         self.assertEqual(User(1).select()['username'], 'mikesarfaty2')
 
+    def test_get_all_users(self):
+        fetched = users.all_users()
+        self.assertEqual(len(fetched), 3)
+        self.assertListEqual([f['username'] for f in fetched], ['mikesarfaty', 'davidrans', 'nickpechie'])
+
 
 class TestPreregisterUserModelAndFlow(unittest.TestCase):
     @classmethod

@@ -92,7 +92,7 @@ def get_users_registration_hash(username):
         return r['registration_hash']
 
 def all_users():
-    with self.conn.cursor as cur:
+    with get_conn().cursor() as cur:
         cur.execute("""
         SELECT * FROM users;
         """)
